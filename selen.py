@@ -12,7 +12,9 @@ chrome_options = Options()
 chrome_options.add_experimental_option("detach", True)
 os.environ['PATH']+=r"C:\seleniumdriver\chromedriver-win64"
 driver=webdriver.Chrome(options=chrome_options)
-driver.get("https://www.amazon.in/s?k=water+bottle&crid=2CIPBRW1IT7FX&sprefix=wat%2Caps%2C1389&ref=nb_sb_ss_ts-doa-p_2_3")
+variable=input("Product name:").split()
+variable="+".join(variable)
+driver.get("https://www.amazon.in/s?k="+variable+"&crid=2CIPBRW1IT7FX&sprefix=wat%2Caps%2C1389&ref=nb_sb_ss_ts-doa-p_2_3")
 isnextdisabled=False
 while not isnextdisabled:
     element = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH,'//div[@data-component-type="s-search-result"]')))
